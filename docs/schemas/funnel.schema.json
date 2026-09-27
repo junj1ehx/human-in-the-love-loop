@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Aggregated dating funnel snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "date",
+    "profiles_reviewed",
+    "likes_sent",
+    "notes_sent",
+    "matches",
+    "first_replies",
+    "substantive_chats",
+    "invitations_sent",
+    "first_dates_completed",
+    "mutual_second_date_yes",
+    "exclusive_started",
+    "minutes_spent"
+  ],
+  "properties": {
+    "date": {"type": "string", "format": "date"},
+    "profiles_reviewed": {"type": "integer", "minimum": 0},
+    "likes_sent": {"type": "integer", "minimum": 0},
+    "notes_sent": {"type": "integer", "minimum": 0},
+    "matches": {"type": "integer", "minimum": 0},
+    "first_replies": {"type": "integer", "minimum": 0},
+    "substantive_chats": {"type": "integer", "minimum": 0},
+    "invitations_sent": {"type": "integer", "minimum": 0},
+    "first_dates_completed": {"type": "integer", "minimum": 0},
+    "mutual_second_date_yes": {"type": "integer", "minimum": 0},
+    "exclusive_started": {"type": "integer", "minimum": 0},
+    "minutes_spent": {"type": "integer", "minimum": 0}
+  }
+}

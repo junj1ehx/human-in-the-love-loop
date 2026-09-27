@@ -1,0 +1,25 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "human-in-the-love-loop"
+version = "0.2.0"
+description = "A local-first, human-in-the-loop relationship decision agent"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = []
+keywords = ["agent", "human-in-the-loop", "local-first", "privacy", "state-machine"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Operating System :: OS Independent",
+]
+
+[project.scripts]
+love-loop = "dating_agent.cli:main"
+dating-agent = "dating_agent.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["dating_agent*"]
+

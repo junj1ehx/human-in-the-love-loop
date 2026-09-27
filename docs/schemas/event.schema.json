@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/qsmatch/event.schema.json",
+  "title": "De-identified event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["occurred_at", "type", "summary", "risk"],
+  "properties": {
+    "occurred_at": {"type": "string", "format": "date-time"},
+    "type": {"enum": ["message_exchange", "invitation", "date_scheduled", "date_completed", "boundary", "red_flag", "check_in", "pause", "close"]},
+    "summary": {"type": "string", "minLength": 1, "maxLength": 500},
+    "reciprocity": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "comfort": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "boundary_respect": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "reliability": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+    "goal_clarity": {"enum": ["unknown", "partial", "clear", null]},
+    "risk": {"enum": ["none", "uncertain", "high"]},
+    "next_action": {"type": ["string", "null"], "maxLength": 250}
+  }
+}
+

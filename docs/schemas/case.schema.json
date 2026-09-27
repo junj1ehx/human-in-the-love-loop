@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.invalid/qsmatch/case.schema.json",
+  "title": "Pseudonymous dating case",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "alias", "platform", "stage", "status", "created_at", "updated_at", "signals", "events"],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,32}$"},
+    "alias": {"type": "string", "pattern": "^[A-Za-z0-9_-]{1,32}$"},
+    "platform": {"const": "qsmatch"},
+    "stage": {"enum": ["matched", "conversing", "date_planned", "dating", "exclusive", "relationship"]},
+    "status": {"enum": ["active", "paused", "closed"]},
+    "created_at": {"type": "string", "format": "date-time"},
+    "updated_at": {"type": "string", "format": "date-time"},
+    "signals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reciprocity", "comfort", "boundary_respect", "reliability", "goal_clarity", "risk"],
+      "properties": {
+        "reciprocity": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "comfort": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "boundary_respect": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "reliability": {"type": ["integer", "null"], "minimum": 1, "maximum": 5},
+        "goal_clarity": {"enum": ["unknown", "partial", "clear"]},
+        "risk": {"enum": ["none", "uncertain", "high"]}
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {"$ref": "event.schema.json"}
+    },
+    "closed_reason": {"enum": ["incompatible", "no_reciprocity", "user_choice", "mutual_end", "safety", "relationship", "other"]}
+  }
+}
+
